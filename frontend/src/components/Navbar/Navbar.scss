@@ -1,0 +1,53 @@
+.navbar {
+  width: 100%;
+  padding: 5px;
+  background: rgb(0, 12, 65);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+
+  transition: all 0.5s ease-in-out;
+
+  a {
+    color: white;
+  }
+}
+
+.colorizeNavbar {
+  transition: all 0.5s ease-in-out;
+}
+
+.container {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2rem;
+}
+
+.app__navbar-links {
+  a {
+    padding: 10px;
+
+    &:hover {
+      color: rgb(226, 226, 226);
+    }
+  }
+}
+
+.right-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    display: block;
+    position: relative;
+    .icon {
+      color: #fff;
+      font-size: 1.5rem;
+    }
+  }
+}

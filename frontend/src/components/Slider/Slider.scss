@@ -1,0 +1,117 @@
+.app__slider {
+  display: flex;
+  position: relative;
+}
+
+.app__slider-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+.app__slider-item {
+  position: relative;
+  display: none;
+  width: 100%;
+  height: 100%;
+
+  img {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .gradient-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(73, 73, 73, 0) 30%,
+      rgba(73, 73, 73, 0) 70%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+  }
+
+  h1 {
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+    text-align: left;
+    color: var(--white-color);
+    font-size: 2rem;
+    padding: 5px 60px 5px 20px;
+    border-left: 10px white solid;
+
+    background: linear-gradient(
+      90deg,
+      rgba(0, 7, 36, 1) 0%,
+      rgba(1, 10, 43, 0.2) 85%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    backdrop-filter: blur(2px); // This be the blur
+  }
+}
+
+.app__slider-active {
+  display: flex;
+}
+
+.app__slider-changer {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  div {
+    width: 10px;
+    height: 10px;
+
+    margin: 5px;
+
+    border-radius: 50%;
+    border: 1px white solid;
+
+    cursor: pointer;
+  }
+
+  .app__slider-active {
+    background: rgb(255, 255, 255);
+  }
+}
+
+button {
+  position: absolute;
+
+  max-height: min-content;
+  font-size: 3rem;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  background: transparent;
+  padding: 0 20px  ;
+  bottom: 50%;
+  display: none;
+  filter: drop-shadow(0 0px 2px rgba(0, 0, 0, 0.5));
+}
+
+.left {
+  left: 0;
+}
+.right {
+  right: 0;
+}
+
+.side-changer-active {
+  display: flex;
+}

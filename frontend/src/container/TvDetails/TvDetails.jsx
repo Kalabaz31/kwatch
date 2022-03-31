@@ -1,38 +1,28 @@
-import React, { useContext, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import { Carousel } from "../../components";
-import Spinner from "../../components/Spinner/Spinner";
+
 import { urls } from "../../constants";
 
-import {
-  getData,
-  getCast,
-  getRecommendations,
-  reset,
-} from "../../features/movie/movieSlice";
+import {getData, getCast, getRecommendations, reset} from '../../features/movie/movieSlice'
 
-import "./MovieDetails.scss";
+import "./TvDetails.scss";
 
 const api_key = "f62888504de69414d884fba13ee25852";
 
-const MovieDetails = () => {
+const TvDetails = () => {
+
   let { id, title } = useParams();
 
-  const movieDetailsUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`;
-  const movieCastUrl = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`;
-  const movieRecommendationsUrl = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${api_key}`;
+  const movieDetailsUrl = `https://api.themoviedb.org/3/tv/${id}?api_key=${api_key}`;
+  const movieCastUrl = `https://api.themoviedb.org/3/tv/${id}/credits?api_key=${api_key}`;
+  const movieRecommendationsUrl = `https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${api_key}`;
 
-  const {
-    movies,
-    cast,
-    recommendations,
-    isLoading,
-    isError,
-    isSuccess,
-    message,
-  } = useSelector((state) => state.movie);
+  
+  const { movies, cast, recommendations, isLoading, isError, isSuccess, message } =
+    useSelector((state) => state.movie);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -47,22 +37,11 @@ const MovieDetails = () => {
     return () => {
       dispatch(reset());
     };
-  }, [
-    isError,
-    message,
-    dispatch,
-    movieDetailsUrl,
-    movieCastUrl,
-    movieRecommendationsUrl,
-  ]);
+  }, [isError, message, dispatch, movieDetailsUrl,movieCastUrl,movieRecommendationsUrl]);
 
-  if (isLoading) {
-    console.log("isLoading")
-    return <Spinner />;
-  }
 
   return (
-    <div className="app__movie-details">
+    <div className="app__tv-details">
       {movies && (
         <>
           <div className="app__details-item">
@@ -88,15 +67,15 @@ const MovieDetails = () => {
 
             <div className="item-details">
               <div className="movie-title">
-                <a href={`/movie/${id}&${title}`}>{movies.title}</a> (
-                {movies.release_date?.slice(0, 4)})
+                <a href={`/tv/${id}&${title}`}>{movies.name}</a> (
+                {movies.first_air_date?.slice(0, 4)})
               </div>
 
               <div className="small-details">
-                <p>{movies.release_date}</p>|
+                <p>{movies.first_air_date}</p>|
                 {movies.genres?.map((genre, index) => (
                   <span key={genre.id}>
-                    <a href={`/genre/${genre.name}`}>{genre.name}</a>
+                    <a href={`/tvseries/${genre.name}`}>{genre.name}</a>
                     {movies.genres.length - 1 > index && "."}
                   </span>
                 ))}
@@ -110,11 +89,17 @@ const MovieDetails = () => {
 
           <div className="top-billed-cast">
             <h2>Top Billed Cast</h2>
-            <Carousel data={cast.cast} type="cast" />
+            <Carousel
+              data={cast.cast}
+              type="cast"
+            />
           </div>
           <div className="top-billed-cast">
             <h2>Recommendations</h2>
-            <Carousel data={recommendations} type="movie" />
+            <Carousel
+              data={recommendations}
+              type="tv"
+            />
           </div>
         </>
       )}
@@ -122,4 +107,4 @@ const MovieDetails = () => {
   );
 };
 
-export default MovieDetails;
+export default TvDetails;

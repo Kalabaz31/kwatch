@@ -1,0 +1,63 @@
+.app__person {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+    margin-top: 20px;
+
+}
+
+.app__person-info {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  min-width: 17rem;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  text-align: left;
+
+  img {
+    width: 17rem;
+    display: block;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    padding: 10px 0 ;
+    width: 100%;
+  }
+  h4 {
+    width: 100%;
+  }
+  p {
+    padding-bottom: 10px;
+    font-size: 14px;
+    width: 100%;
+  }
+}
+
+.app__person-details {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  overflow: hidden;
+  text-align: left;
+
+  h1 {
+    padding-bottom: 20px;
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+    padding-bottom: 10px;
+  }
+  p {
+    padding-bottom: 10px;
+    font-size: 14px;
+  }
+}

@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 const movieSchema = mongoose.Schema(
   {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
+    },
     title: {
       type: String,
       required: [true, "Please Add a Title For The Movie!"],
@@ -45,4 +50,4 @@ const movieSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model('Movie', movieSchema)
+module.exports = mongoose.model("Movie", movieSchema);
